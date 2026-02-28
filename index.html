@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Amar Kumar — Aspiring Data Scientist | Portfolio showcasing projects, skills, and insights in data science and machine learning." />
+  <title>Amar Kumar — Data Scientist Portfolio</title>
+
+  <!-- Google Fonts: Syne (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== SCROLL PROGRESS BAR ===================== -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===================== CUSTOM CURSOR ===================== -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span>AK<span class="logo-bracket"> /&gt;</span>
+      </a>
+      <ul class="nav-links" id="navLinks" role="menubar">
+        <li role="none"><a href="#about" role="menuitem">About</a></li>
+        <li role="none"><a href="#skills" role="menuitem">Skills</a></li>
+        <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
+        <li role="none"><a href="#experience" role="menuitem">Experience</a></li>
+        <li role="none"><a href="#certifications" role="menuitem">Certifications</a></li>
+        <li role="none"><a href="#blog" role="menuitem">Blog</a></li>
+        <li role="none"><a href="#contact" role="menuitem" class="nav-cta">Say Hello</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero-grain" aria-hidden="true"></div>
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <p class="hero-greeting reveal-up">Hello, I'm</p>
+        <h1 class="hero-name reveal-up">Amar Kumar</h1>
+        <div class="hero-typewriter reveal-up">
+          <span class="typewriter-text" id="typewriterText"></span>
+          <span class="typewriter-cursor" aria-hidden="true">|</span>
+        </div>
+        <p class="hero-bio reveal-up">
+          Engineer by training, data scientist by passion. I build intelligent systems
+          that turn raw data into actionable insights — bridging the gap between
+          complex analytics and real-world impact.
+        </p>
+        <div class="hero-buttons reveal-up">
+          <a href="#" class="btn btn-primary" download>
+            <i class="fa-solid fa-download"></i> Download Resume
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-solid fa-paper-plane"></i> Contact Me
+          </a>
+        </div>
+        <div class="hero-scroll-indicator reveal-up" aria-hidden="true">
+          <div class="mouse">
+            <div class="mouse-wheel"></div>
+          </div>
+          <span>Scroll to explore</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section class="about section" id="about">
+      <div class="container">
+        <h2 class="section-label reveal-up">About Me</h2>
+        <h3 class="section-title reveal-up">The Story So Far</h3>
+        <div class="about-grid">
+          <div class="about-image reveal-left">
+            <div class="image-frame">
+              <div class="image-placeholder">
+                <img src="https://picsum.photos/seed/amarportrait/480/580" alt="Portrait of Amar Kumar" loading="lazy" />
+              </div>
+              <div class="image-decoration" aria-hidden="true"></div>
+            </div>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Certifications</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Years Learning</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-text reveal-right">
+            <p>
+              I've always been the person who asks <em>"why?"</em> one too many times. That
+              curiosity led me from an engineering classroom to the world of data science,
+              where every dataset tells a story waiting to be uncovered.
+            </p>
+            <p>
+              My engineering background gave me the discipline of structured problem-solving.
+              But it was my first encounter with a messy, real-world dataset that truly lit
+              the spark — the thrill of cleaning noise into clarity, of finding the signal
+              that drives a decision. Since then, I've been building models, wrangling data,
+              and chasing that feeling every single day.
+            </p>
+            <p>
+              I believe great data science isn't just about algorithms — it's about asking
+              the right questions and communicating answers that people can act on. Whether
+              it's predicting customer behavior or visualizing trends that shift strategy,
+              I'm driven to make data <strong>useful</strong>.
+            </p>
+            <div class="about-traits">
+              <span class="trait"><i class="fa-solid fa-microscope"></i> Curious by Nature</span>
+              <span class="trait"><i class="fa-solid fa-bullseye"></i> Detail-Oriented</span>
+              <span class="trait"><i class="fa-solid fa-book-open"></i> Always Learning</span>
+              <span class="trait"><i class="fa-solid fa-people-group"></i> Team Player</span>
+              <span class="trait"><i class="fa-solid fa-lightbulb"></i> Problem Solver</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS SECTION ===================== -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <h2 class="section-label reveal-up">Skills</h2>
+        <h3 class="section-title reveal-up">My Technical Toolkit</h3>
+        <div class="skills-grid">
+
+          <!-- Programming -->
+          <div class="skill-category reveal-up">
+            <div class="skill-category-header">
+              <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+              <h4>Programming</h4>
+            </div>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Python</span><span>90%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>SQL</span><span>85%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>R</span><span>70%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data & ML -->
+          <div class="skill-category reveal-up">
+            <div class="skill-category-header">
+              <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+              <h4>Data &amp; ML</h4>
+            </div>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Pandas / NumPy</span><span>88%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Scikit-learn</span><span>82%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>TensorFlow</span><span>65%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualization -->
+          <div class="skill-category reveal-up">
+            <div class="skill-category-header">
+              <div class="skill-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h4>Visualization</h4>
+            </div>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Tableau</span><span>80%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Power BI</span><span>75%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Matplotlib / Seaborn</span><span>85%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-category reveal-up">
+            <div class="skill-category-header">
+              <div class="skill-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              <h4>Tools</h4>
+            </div>
+            <div class="skill-bars">
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Git / GitHub</span><span>85%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>Jupyter Notebook</span><span>92%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="skill-bar-info"><span>VS Code / Excel</span><span>88%</span></div>
+                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS SECTION ===================== -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <h2 class="section-label reveal-up">Projects</h2>
+        <h3 class="section-title reveal-up">Things I've Built</h3>
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <article class="project-card reveal-up">
+            <div class="project-card-inner">
+              <div class="project-image">
+                <img src="https://picsum.photos/seed/churn/600/400" alt="Customer Churn Prediction project screenshot" loading="lazy" />
+                <div class="project-overlay">
+                  <p>Built a classification model achieving 93% accuracy to identify at-risk telecom customers using ensemble methods and feature engineering on a 7,000-row dataset.</p>
+                </div>
+              </div>
+              <div class="project-info">
+                <h4>Customer Churn Prediction</h4>
+                <p>ML model to identify customers likely to leave, enabling proactive retention strategies.</p>
+                <div class="project-tags">
+                  <span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>XGBoost</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
+                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card reveal-up">
+            <div class="project-card-inner">
+              <div class="project-image">
+                <img src="https://picsum.photos/seed/forecast/600/400" alt="Sales Forecasting Dashboard screenshot" loading="lazy" />
+                <div class="project-overlay">
+                  <p>Interactive Tableau dashboard backed by a time-series ARIMA model, forecasting quarterly revenue for a retail chain with 94% directional accuracy.</p>
+                </div>
+              </div>
+              <div class="project-info">
+                <h4>Sales Forecasting Dashboard</h4>
+                <p>Time-series analysis and interactive dashboard to project future sales trends.</p>
+                <div class="project-tags">
+                  <span>Python</span><span>Tableau</span><span>ARIMA</span><span>Statsmodels</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
+                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card reveal-up">
+            <div class="project-card-inner">
+              <div class="project-image">
+                <img src="https://picsum.photos/seed/nlpsentiment/600/400" alt="NLP Sentiment Analyzer screenshot" loading="lazy" />
+                <div class="project-overlay">
+                  <p>Fine-tuned a Transformer-based model on 50k+ product reviews, deploying a Flask API that classifies sentiment in real time with 91% F1-score.</p>
+                </div>
+              </div>
+              <div class="project-info">
+                <h4>NLP Sentiment Analyzer</h4>
+                <p>Deep learning pipeline for real-time sentiment classification of product reviews.</p>
+                <div class="project-tags">
+                  <span>Python</span><span>TensorFlow</span><span>NLP</span><span>Flask</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
+                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card reveal-up">
+            <div class="project-card-inner">
+              <div class="project-image">
+                <img src="https://picsum.photos/seed/edadata/600/400" alt="Exploratory Data Analysis project screenshot" loading="lazy" />
+                <div class="project-overlay">
+                  <p>Comprehensive EDA on a public health dataset, uncovering key demographic correlations with interactive Plotly visualizations and statistical testing.</p>
+                </div>
+              </div>
+              <div class="project-info">
+                <h4>EDA on Public Health Dataset</h4>
+                <p>In-depth exploratory analysis revealing hidden patterns in public health data.</p>
+                <div class="project-tags">
+                  <span>Python</span><span>Plotly</span><span>Seaborn</span><span>Jupyter</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
+                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE TIMELINE ===================== -->
+    <section class="experience section" id="experience">
+      <div class="container">
+        <h2 class="section-label reveal-up">Experience &amp; Education</h2>
+        <h3 class="section-title reveal-up">My Journey</h3>
+        <div class="timeline">
+
+          <div class="timeline-item reveal-left">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2024 — Present</span>
+              <h4>Data Science Intern</h4>
+              <p class="timeline-org">TechAnalytica Solutions</p>
+              <p>Worked on predictive analytics pipelines, built ML models for client engagement scoring, and automated ETL workflows reducing manual processing time by 40%.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-right">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2023</span>
+              <h4>ML Research Project Lead</h4>
+              <p class="timeline-org">University Research Lab</p>
+              <p>Led a 4-member team on a sentiment analysis research project using Transformer architectures. Published findings in the university journal and presented at a regional data science symposium.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-left">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2021 — 2025</span>
+              <h4>B.Tech in Computer Science &amp; Engineering</h4>
+              <p class="timeline-org">National Institute of Technology</p>
+              <p>Relevant coursework: Data Structures &amp; Algorithms, Statistical Methods, Machine Learning, Database Management Systems, Linear Algebra, Probability &amp; Statistics.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-right">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2021</span>
+              <h4>Higher Secondary (XII) — Science</h4>
+              <p class="timeline-org">Delhi Public School</p>
+              <p>Scored 94% with a focus on Mathematics and Computer Science. Won the inter-school coding competition and led the school's tech club.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CERTIFICATIONS ===================== -->
+    <section class="certifications section" id="certifications">
+      <div class="container">
+        <h2 class="section-label reveal-up">Certifications &amp; Achievements</h2>
+        <h3 class="section-title reveal-up">Credentials That Back It Up</h3>
+        <div class="cert-scroll-wrapper reveal-up">
+          <div class="cert-track">
+
+            <div class="cert-card">
+              <div class="cert-icon"><i class="fa-brands fa-google"></i></div>
+              <h4>Google Data Analytics</h4>
+              <p>Professional Certificate</p>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon"><i class="fa-solid fa-flask"></i></div>
+              <h4>IBM Data Science</h4>
+              <p>Professional Certificate</p>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon"><i class="fa-solid fa-trophy"></i></div>
+              <h4>Kaggle Competitions</h4>
+              <p>Top 15% — Titanic &amp; Housing Prices</p>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon"><i class="fa-brands fa-hackerrank"></i></div>
+              <h4>HackerRank Python</h4>
+              <p>Gold Badge (5 Stars)</p>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
+              <h4>Deep Learning Specialization</h4>
+              <p>Coursera — Andrew Ng</p>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
+              <h4>SQL Advanced</h4>
+              <p>HackerRank Certification</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BLOG SECTION ===================== -->
+    <section class="blog section" id="blog">
+      <div class="container">
+        <h2 class="section-label reveal-up">Blog</h2>
+        <h3 class="section-title reveal-up">Thoughts &amp; Learnings</h3>
+        <p class="section-subtitle reveal-up">Where I share what I'm learning, building, and thinking about in the world of data.</p>
+        <div class="blog-grid">
+
+          <article class="blog-card reveal-up">
+            <div class="blog-card-image">
+              <img src="https://picsum.photos/seed/mlmodel/600/340" alt="Blog post illustration: building an ML model" loading="lazy" />
+              <span class="blog-category">Machine Learning</span>
+            </div>
+            <div class="blog-card-body">
+              <time datetime="2025-01-15">January 15, 2025</time>
+              <h4>How I Built My First ML Model from Scratch</h4>
+              <p>A walk through the messy, frustrating, and ultimately rewarding process of going from a CSV file to a working prediction model — no magic, just persistence.</p>
+              <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal-up">
+            <div class="blog-card-image">
+              <img src="https://picsum.photos/seed/pylibs/600/340" alt="Blog post illustration: Python libraries" loading="lazy" />
+              <span class="blog-category">Python Tips</span>
+            </div>
+            <div class="blog-card-body">
+              <time datetime="2025-02-03">February 3, 2025</time>
+              <h4>5 Python Libraries Every Data Scientist Should Know</h4>
+              <p>Beyond the obvious Pandas and NumPy — here are five lesser-known libraries that have saved me hours of work and made my analyses cleaner.</p>
+              <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="blog-card reveal-up">
+            <div class="blog-card-image">
+              <img src="https://picsum.photos/seed/confmatrix/600/340" alt="Blog post illustration: confusion matrix explained" loading="lazy" />
+              <span class="blog-category">Career</span>
+            </div>
+            <div class="blog-card-body">
+              <time datetime="2025-02-20">February 20, 2025</time>
+              <h4>Making Sense of Confusion Matrices</h4>
+              <p>Precision, recall, F1, specificity — it all made zero sense until I reframed it with a real example. Here's the explanation I wish I had when I started.</p>
+              <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT SECTION ===================== -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <h2 class="section-label reveal-up">Contact</h2>
+        <h3 class="section-title reveal-up">Let's Build Something with Data</h3>
+        <p class="section-subtitle reveal-up">Have an idea, a question, or just want to say hello? I'd love to hear from you.</p>
+        <div class="contact-grid">
+          <form class="contact-form reveal-left" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" name="subject" placeholder="What's this about?" />
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me more..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <span>Send Message</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+          <div class="contact-info reveal-right">
+            <div class="contact-info-card">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:amar.kumar@email.com">amar.kumar@email.com</a>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <h4>Location</h4>
+                <p>India</p>
+              </div>
+            </div>
+            <div class="contact-social">
+              <h4>Find me on</h4>
+              <div class="social-links">
+                <a href="#" aria-label="LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub profile"><i class="fa-brands fa-github"></i></a>
+                <a href="#" aria-label="Twitter / X profile"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:amar.kumar@email.com" aria-label="Send email"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <a href="#hero" class="nav-logo" aria-label="Home">
+          <span class="logo-bracket">&lt;</span>AK<span class="logo-bracket"> /&gt;</span>
+        </a>
+        <p>&copy; 2025 Amar Kumar &mdash; Designed &amp; Built by Amar Kumar</p>
+      </div>
+      <ul class="footer-nav" aria-label="Footer navigation">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
