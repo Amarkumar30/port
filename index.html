@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Amar Kumar — Aspiring Data Scientist | Portfolio showcasing projects, skills, and insights in data science and machine learning." />
-  <title>Amar Kumar — Data Scientist Portfolio</title>
+  <meta name="description" content="Amar Kumar — Final-year CS student specializing in machine learning, data engineering, and full-stack development. Explore projects, skills, and experience." />
+  <meta name="keywords" content="Data Scientist, Machine Learning Engineer, Python Developer, Full-Stack, Portfolio, Amar Kumar" />
+  <meta property="og:title" content="Amar Kumar — Data Science & Engineering Portfolio" />
+  <meta property="og:description" content="ML pipelines, full-stack projects, and production-grade code. Open to new opportunities." />
+  <meta name="theme-color" content="#E8416A" />
+  <title>Amar Kumar — Data Science & Engineering Portfolio</title>
 
-  <!-- Google Fonts: Syne (display) + DM Sans (body) -->
+  <!-- Google Fonts: Playfair Display (hero) + Syne (headings) + DM Sans (body) + JetBrains Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,8 +22,35 @@
 </head>
 <body>
 
+  <!-- ===================== PRELOADER ===================== -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <span class="preloader-bracket">&lt;</span>AK<span class="preloader-bracket"> /&gt;</span>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill" id="preloaderFill"></div>
+      </div>
+      <p class="preloader-text">Loading portfolio...</p>
+    </div>
+  </div>
+
+  <!-- ===================== AMBIENT BACKGROUND ===================== -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="glow-orb glow-orb--teal"></div>
+    <div class="glow-orb glow-orb--indigo"></div>
+    <div class="glow-orb glow-orb--violet"></div>
+    <div class="glow-orb glow-orb--cyan"></div>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
   <!-- ===================== SCROLL PROGRESS BAR ===================== -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===================== BACK TO TOP ===================== -->
+  <a href="#hero" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </a>
 
   <!-- ===================== CUSTOM CURSOR ===================== -->
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -36,15 +67,20 @@
         <li role="none"><a href="#skills" role="menuitem">Skills</a></li>
         <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
         <li role="none"><a href="#experience" role="menuitem">Experience</a></li>
-        <li role="none"><a href="#certifications" role="menuitem">Certifications</a></li>
         <li role="none"><a href="#blog" role="menuitem">Blog</a></li>
-        <li role="none"><a href="#contact" role="menuitem" class="nav-cta">Say Hello</a></li>
+        <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <i class="fa-solid fa-moon theme-icon-dark"></i>
+          <i class="fa-solid fa-sun theme-icon-light"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -54,31 +90,443 @@
     <section class="hero" id="hero">
       <div class="hero-grain" aria-hidden="true"></div>
       <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
-      <div class="hero-content">
-        <p class="hero-greeting reveal-up">Hello, I'm</p>
-        <h1 class="hero-name reveal-up">Amar Kumar</h1>
-        <div class="hero-typewriter reveal-up">
-          <span class="typewriter-text" id="typewriterText"></span>
-          <span class="typewriter-cursor" aria-hidden="true">|</span>
-        </div>
-        <p class="hero-bio reveal-up">
-          Engineer by training, data scientist by passion. I build intelligent systems
-          that turn raw data into actionable insights — bridging the gap between
-          complex analytics and real-world impact.
-        </p>
-        <div class="hero-buttons reveal-up">
-          <a href="#" class="btn btn-primary" download>
-            <i class="fa-solid fa-download"></i> Download Resume
-          </a>
-          <a href="#contact" class="btn btn-outline">
-            <i class="fa-solid fa-paper-plane"></i> Contact Me
-          </a>
-        </div>
-        <div class="hero-scroll-indicator reveal-up" aria-hidden="true">
-          <div class="mouse">
-            <div class="mouse-wheel"></div>
+      <div class="hero-split">
+        <div class="hero-content">
+          <p class="hero-greeting reveal-up">Hi, I'm</p>
+          <h1 class="hero-name reveal-up">Amar Kumar</h1>
+          <div class="hero-typewriter reveal-up">
+            <span class="typewriter-text" id="typewriterText"></span>
+            <span class="typewriter-cursor" aria-hidden="true">|</span>
           </div>
-          <span>Scroll to explore</span>
+          <p class="hero-bio reveal-up">
+            Final-year engineering student with hands-on experience in machine learning, data analysis, and full-stack development. I build end-to-end data products — from raw pipelines to deployed models — and write clean, scalable code that bridges data science with engineering.
+          </p>
+          <div class="hero-buttons reveal-up">
+            <a href="#" class="btn btn-primary" download>
+              <i class="fa-solid fa-download"></i> Download CV / Resume
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fa-solid fa-paper-plane"></i> Contact Me
+            </a>
+          </div>
+          <div class="hero-scroll-indicator reveal-up" aria-hidden="true">
+            <div class="mouse">
+              <div class="mouse-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+          </div>
+        </div>
+
+        <!-- ============ HERO ILLUSTRATION ============ -->
+        <div class="hero-illustration reveal-right" aria-hidden="true">
+          <svg class="hero-svg" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="charGlow" cx="50%" cy="48%" r="50%">
+                <stop offset="0%" stop-color="#00d4aa" stop-opacity="0.18"/>
+                <stop offset="60%" stop-color="#6366f1" stop-opacity="0.06"/>
+                <stop offset="100%" stop-color="#0c1017" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="hoodieGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#00d4aa"/>
+                <stop offset="100%" stop-color="#00b894"/>
+              </linearGradient>
+              <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e2e8f0"/>
+                <stop offset="100%" stop-color="#cbd5e1"/>
+              </linearGradient>
+              <linearGradient id="pantsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1e293b"/>
+                <stop offset="100%" stop-color="#0f172a"/>
+              </linearGradient>
+              <linearGradient id="sneakerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f8fafc"/>
+                <stop offset="100%" stop-color="#e2e8f0"/>
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#d4956b"/>
+                <stop offset="100%" stop-color="#c68960"/>
+              </linearGradient>
+              <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#374151"/>
+                <stop offset="100%" stop-color="#1f2937"/>
+              </linearGradient>
+              <linearGradient id="leafGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00d4aa"/>
+                <stop offset="100%" stop-color="#00b894"/>
+              </linearGradient>
+              <linearGradient id="leafGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#818cf8"/>
+              </linearGradient>
+              <linearGradient id="leafGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4"/>
+                <stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="softGlow">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="dropShadow">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
+              </filter>
+            </defs>
+
+            <!-- Background ambient glow -->
+            <circle cx="260" cy="250" r="230" fill="url(#charGlow)" filter="url(#softGlow)" opacity="0.6"/>
+
+            <!-- ══════════ SCATTERED FLOATING LEAVES ══════════ -->
+            <!-- Leaf shapes (like Kody's scattered teal leaves) -->
+            <g class="leaf leaf-1" transform="translate(72, 105) rotate(-30)">
+              <path d="M0,8 Q6,0 12,8 Q6,16 0,8Z" fill="url(#leafGrad1)" opacity="0.7"/>
+              <line x1="0" y1="8" x2="12" y2="8" stroke="#00b894" stroke-width="0.5" opacity="0.5"/>
+            </g>
+            <g class="leaf leaf-3" transform="translate(48, 280) rotate(-60)">
+              <path d="M0,6 Q4,0 8,6 Q4,12 0,6Z" fill="url(#leafGrad1)" opacity="0.55"/>
+              <line x1="0" y1="6" x2="8" y2="6" stroke="#00b894" stroke-width="0.4" opacity="0.5"/>
+            </g>
+            <g class="leaf leaf-4" transform="translate(465, 200) rotate(45)">
+              <path d="M0,8 Q6,0 12,8 Q6,16 0,8Z" fill="url(#leafGrad2)" opacity="0.5"/>
+              <line x1="0" y1="8" x2="12" y2="8" stroke="#6366f1" stroke-width="0.5" opacity="0.4"/>
+            </g>
+            <g class="leaf leaf-5" transform="translate(95, 420) rotate(15)">
+              <path d="M0,7 Q5,0 10,7 Q5,14 0,7Z" fill="url(#leafGrad3)" opacity="0.6"/>
+              <line x1="0" y1="7" x2="10" y2="7" stroke="#06b6d4" stroke-width="0.5" opacity="0.5"/>
+            </g>
+            <g class="leaf leaf-8" transform="translate(400, 430) rotate(-50)">
+              <path d="M0,7 Q5,0 10,7 Q5,14 0,7Z" fill="url(#leafGrad2)" opacity="0.45"/>
+              <line x1="0" y1="7" x2="10" y2="7" stroke="#818cf8" stroke-width="0.5" opacity="0.4"/>
+            </g>
+            <g class="leaf leaf-12" transform="translate(480, 370) rotate(40)">
+              <path d="M0,6 Q4,0 8,6 Q4,12 0,6Z" fill="url(#leafGrad3)" opacity="0.45"/>
+              <line x1="0" y1="6" x2="8" y2="6" stroke="#22d3ee" stroke-width="0.4" opacity="0.5"/>
+            </g>
+
+            <!-- ═══════ CHARACTER (cartoon, floating, bald) ═══════ -->
+            <g class="character-float" filter="url(#dropShadow)">
+
+              <!-- Ground shadow -->
+              <ellipse class="char-shadow" cx="260" cy="460" rx="60" ry="10" fill="#00d4aa" opacity="0.08"/>
+
+              <!-- ── LEGS (pants, slightly dynamic) ── -->
+              <!-- Left leg -->
+              <path d="M240,340 Q234,365 230,395 Q228,405 227,410" stroke="url(#pantsGrad)" stroke-width="22" fill="none" stroke-linecap="round"/>
+              <!-- Right leg (kicked back a bit for dynamism) -->
+              <path d="M275,338 Q282,362 288,388 Q290,400 293,408" stroke="url(#pantsGrad)" stroke-width="22" fill="none" stroke-linecap="round"/>
+
+              <!-- ── SNEAKERS (detailed, white like Kody) ── -->
+              <!-- Left sneaker -->
+              <g transform="translate(210, 404)">
+                <path d="M0,10 Q0,0 17,0 Q34,0 34,10 Q34,18 24,20 L10,20 Q0,18 0,10Z" fill="url(#sneakerGrad)"/>
+                <path d="M0,10 Q0,5 17,5 Q34,5 34,10" stroke="#94a3b8" stroke-width="0.8" fill="none" opacity="0.4"/>
+                <rect x="8" y="1" width="18" height="4" rx="2" fill="#00d4aa" opacity="0.3"/>
+                <circle cx="10" cy="12" r="1.2" fill="#94a3b8" opacity="0.3"/>
+                <circle cx="14" cy="12" r="1.2" fill="#94a3b8" opacity="0.3"/>
+                <circle cx="18" cy="12" r="1.2" fill="#94a3b8" opacity="0.3"/>
+                <rect x="0" y="17" width="34" height="3" rx="1.5" fill="#e2e8f0"/>
+              </g>
+              <!-- Right sneaker -->
+              <g transform="translate(277, 402)">
+                <path d="M0,10 Q0,0 17,0 Q34,0 34,10 Q34,18 24,20 L10,20 Q0,18 0,10Z" fill="url(#sneakerGrad)"/>
+                <path d="M0,10 Q0,5 17,5 Q34,5 34,10" stroke="#94a3b8" stroke-width="0.8" fill="none" opacity="0.4"/>
+                <rect x="8" y="1" width="18" height="4" rx="2" fill="#00d4aa" opacity="0.3"/>
+                <circle cx="10" cy="12" r="1.2" fill="#94a3b8" opacity="0.3"/>
+                <circle cx="14" cy="12" r="1.2" fill="#94a3b8" opacity="0.3"/>
+                <circle cx="18" cy="12" r="1.2" fill="#94a3b8" opacity="0.3"/>
+                <rect x="0" y="17" width="34" height="3" rx="1.5" fill="#e2e8f0"/>
+              </g>
+
+              <!-- ── BODY (Open hoodie with T-shirt underneath) ── -->
+              <!-- T-shirt (lighter, patterned) -->
+              <path d="M226,228 Q222,258 224,295 Q226,325 236,340 Q248,350 260,350 Q272,350 284,340 Q294,325 296,295 Q298,258 294,228 Q278,220 260,218 Q242,220 226,228" fill="url(#shirtGrad)"/>
+              <!-- "23" on t-shirt -->
+              <text x="260" y="288" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="32" font-weight="900" fill="#ffffff" opacity="0.35" letter-spacing="3">23</text>
+              <text x="260" y="288" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="32" font-weight="900" fill="#1e293b" opacity="0.18" letter-spacing="3" dx="1" dy="1">23</text>
+              <!-- T-shirt pattern (abstract zigzag like Kody) -->
+              <g opacity="0.12" stroke="#64748b" stroke-width="0.8" fill="none">
+                <path d="M238,240 L244,248 L250,240 L256,248 L262,240 L268,248 L274,240"/>
+                <path d="M236,256 L242,264 L248,256 L254,264 L260,256 L266,264 L272,256"/>
+                <path d="M238,272 L244,280 L250,272 L256,280 L262,272 L268,280 L274,272"/>
+                <path d="M240,288 L246,296 L252,288 L258,296 L264,288 L270,296"/>
+              </g>
+
+              <!-- Hoodie (open jacket over shirt) -->
+              <!-- Left panel -->
+              <path d="M220,225 Q218,258 220,295 Q222,328 232,343 Q240,350 245,350 L245,228 Q234,222 220,225" fill="url(#hoodieGrad)" opacity="0.95"/>
+              <!-- Right panel -->
+              <path d="M300,225 Q302,258 300,295 Q298,328 288,343 Q280,350 275,350 L275,228 Q286,222 300,225" fill="url(#hoodieGrad)" opacity="0.95"/>
+              <!-- Hood collar behind neck -->
+              <path d="M226,226 Q228,214 245,208 Q255,204 260,204 Q265,204 275,208 Q292,214 294,226" fill="#00b894" opacity="0.6"/>
+              <!-- Hoodie collar fold left -->
+              <path d="M226,226 Q232,232 240,230 L245,228" stroke="#00b894" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <!-- Hoodie collar fold right -->
+              <path d="M294,226 Q288,232 280,230 L275,228" stroke="#00b894" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+              <!-- Hoodie strings -->
+              <line x1="248" y1="228" x2="246" y2="262" stroke="#fff" stroke-width="1.2" opacity="0.2"/>
+              <circle cx="246" cy="264" r="2" fill="#fff" opacity="0.15"/>
+              <line x1="272" y1="228" x2="274" y2="262" stroke="#fff" stroke-width="1.2" opacity="0.2"/>
+              <circle cx="274" cy="264" r="2" fill="#fff" opacity="0.15"/>
+
+              <!-- Left hoodie pocket -->
+              <rect x="224" y="290" width="20" height="12" rx="5" fill="#00b894" opacity="0.35"/>
+              <!-- Right hoodie pocket -->
+              <rect x="276" y="290" width="20" height="12" rx="5" fill="#00b894" opacity="0.35"/>
+
+              <!-- ── LEFT ARM (extended out, holding laptop) ── -->
+              <path d="M220,238 Q198,245 175,248 Q158,250 142,248"
+                    stroke="#00d4aa" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <!-- Left hand -->
+              <circle cx="138" cy="247" r="10" fill="url(#skinGrad)"/>
+
+              <!-- ── Laptop in left hand ── -->
+              <g transform="translate(100, 218)" filter="url(#dropShadow)">
+                <!-- Laptop base -->
+                <rect x="0" y="28" width="60" height="6" rx="2" fill="url(#laptopGrad)"/>
+                <!-- Laptop screen -->
+                <rect x="3" y="2" width="54" height="28" rx="4" fill="#1f2937" stroke="#374151" stroke-width="1.5"/>
+                <rect x="7" y="6" width="46" height="20" rx="2" fill="#111827"/>
+                <!-- Screen code -->
+                <rect x="11" y="10" width="20" height="2.5" rx="1" fill="#00d4aa" opacity="0.7"/>
+                <rect x="11" y="15" width="30" height="2.5" rx="1" fill="#6366f1" opacity="0.5"/>
+                <rect x="11" y="20" width="15" height="2.5" rx="1" fill="#8b5cf6" opacity="0.4"/>
+                <!-- Screen glow -->
+                <rect x="7" y="6" width="46" height="20" rx="2" fill="#00d4aa" opacity="0.03"/>
+              </g>
+
+              <!-- ── RIGHT ARM (waving up, greeting) ── -->
+              <path d="M300,238 Q318,225 330,205 Q340,185 345,165"
+                    stroke="#00d4aa" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <!-- Right hand (open, waving) -->
+              <g transform="translate(336, 140)">
+                <circle cx="10" cy="22" r="11" fill="url(#skinGrad)"/>
+                <!-- Fingers spread (waving gesture) -->
+                <path d="M4,12 Q2,4 5,0" stroke="url(#skinGrad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M10,10 Q10,2 11,0" stroke="url(#skinGrad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M16,12 Q18,4 17,0" stroke="url(#skinGrad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M21,16 Q24,10 22,6" stroke="url(#skinGrad)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+              </g>
+
+              <!-- ── NECK ── -->
+              <rect x="250" y="200" width="20" height="22" rx="6" fill="url(#skinGrad)"/>
+
+              <!-- ── HEAD ── -->
+              <g>
+                <!-- Head shape -->
+                <ellipse cx="260" cy="165" rx="44" ry="48" fill="url(#skinGrad)"/>
+
+                <!-- ── BLACK CAP WITH ADIDAS LOGO ── -->
+                <!-- Hair peeking below cap at sides -->
+                <path d="M218,160 Q217,154 218,148" stroke="#1a1a1a" stroke-width="5" fill="none" opacity="0.3" stroke-linecap="round"/>
+                <path d="M302,160 Q303,154 302,148" stroke="#1a1a1a" stroke-width="5" fill="none" opacity="0.3" stroke-linecap="round"/>
+                <!-- Hair fringe peeking at back -->
+                <path d="M222,162 Q220,156 221,150" stroke="#1a1a1a" stroke-width="3" fill="none" opacity="0.2" stroke-linecap="round"/>
+                <path d="M298,162 Q300,156 299,150" stroke="#1a1a1a" stroke-width="3" fill="none" opacity="0.2" stroke-linecap="round"/>
+
+                <!-- Cap crown (6-panel fitted cap, hugs the head tightly) -->
+                <path d="M216,158
+                         Q214,144 219,132
+                         Q227,120 242,113
+                         Q252,109 260,108
+                         Q268,109 278,113
+                         Q293,120 301,132
+                         Q306,144 304,158Z"
+                      fill="#0f0f0f"/>
+                <!-- Front panel (structured, slightly raised) -->
+                <path d="M233,158 Q231,142 237,130 Q247,118 260,115 Q273,118 283,130 Q289,142 287,158Z"
+                      fill="#161616"/>
+                <!-- Side panel shading (left) -->
+                <path d="M216,158 Q214,144 219,132 Q227,122 240,115 L233,158Z"
+                      fill="#0a0a0a" opacity="0.3"/>
+                <!-- Side panel shading (right) -->
+                <path d="M304,158 Q306,144 301,132 Q293,122 280,115 L287,158Z"
+                      fill="#0a0a0a" opacity="0.3"/>
+                <!-- Crown highlight (top) -->
+                <ellipse cx="260" cy="118" rx="22" ry="8" fill="#1c1c1c" opacity="0.35"/>
+                <!-- Panel seam lines -->
+                <line x1="260" y1="108" x2="260" y2="158" stroke="#1e1e1e" stroke-width="0.8" opacity="0.25"/>
+                <path d="M240,111 Q247,146 248,158" stroke="#1e1e1e" stroke-width="0.5" fill="none" opacity="0.15"/>
+                <path d="M280,111 Q273,146 272,158" stroke="#1e1e1e" stroke-width="0.5" fill="none" opacity="0.15"/>
+                <!-- Top button -->
+                <circle cx="260" cy="108" r="2.8" fill="#181818" stroke="#2a2a2a" stroke-width="0.7"/>
+                <circle cx="260" cy="108" r="1" fill="#2a2a2a"/>
+
+                <!-- ── BRIM (curved baseball visor) ── -->
+                <!-- Brim shape -->
+                <path d="M214,159 Q213,162 215,165
+                         Q232,173 260,175 Q288,173 305,165
+                         Q307,162 306,159
+                         Q286,162 260,163 Q234,162 214,159Z"
+                      fill="#0a0a0a"/>
+                <!-- Brim underside shadow -->
+                <path d="M218,165 Q240,172 260,174 Q280,172 302,165"
+                      fill="none" stroke="#000" stroke-width="1.2" opacity="0.35"/>
+                <!-- Brim top highlight -->
+                <path d="M217,159.5 Q240,161.5 260,162.5 Q280,161.5 303,159.5"
+                      stroke="#252525" stroke-width="0.5" fill="none" opacity="0.5"/>
+                <!-- Subtle brim curve sheen -->
+                <path d="M230,162 Q245,164 260,165 Q275,164 290,162"
+                      stroke="#222" stroke-width="0.4" fill="none" opacity="0.25"/>
+
+                <!-- ── ADIDAS 3-STRIPE LOGO (front panel center) ── -->
+                <g transform="translate(250, 125)">
+                  <!-- Left stripe (shortest) -->
+                  <path d="M1,22 L0,14 L3.5,14 L4.5,22Z" fill="#ffffff" opacity="0.92"/>
+                  <!-- Middle stripe (medium) -->
+                  <path d="M7,22 L5,8 L8.5,8 L10.5,22Z" fill="#ffffff" opacity="0.92"/>
+                  <!-- Right stripe (tallest) -->
+                  <path d="M13,22 L10.5,1 L14,1 L16.5,22Z" fill="#ffffff" opacity="0.92"/>
+                </g>
+
+                <!-- Ears (partially behind hair) -->
+                <ellipse cx="216" cy="172" rx="7" ry="10" fill="#c68960"/>
+                <ellipse cx="216" cy="172" rx="4" ry="6" fill="#b5794e" opacity="0.3"/>
+                <ellipse cx="304" cy="172" rx="7" ry="10" fill="#c68960"/>
+                <ellipse cx="304" cy="172" rx="4" ry="6" fill="#b5794e" opacity="0.3"/>
+
+                <!-- Eyes (no glasses, warm dark brown) -->
+                <!-- Eye whites -->
+                <ellipse cx="245" cy="168" rx="7" ry="5.5" fill="#faf5f0"/>
+                <ellipse cx="275" cy="168" rx="7" ry="5.5" fill="#faf5f0"/>
+                <!-- Iris -->
+                <circle cx="246" cy="168" r="4.5" fill="#2d1810"/>
+                <circle cx="276" cy="168" r="4.5" fill="#2d1810"/>
+                <!-- Pupil -->
+                <circle cx="246" cy="168" r="2.5" fill="#0d0805"/>
+                <circle cx="276" cy="168" r="2.5" fill="#0d0805"/>
+                <!-- Eye highlights (depth & life) -->
+                <circle cx="244" cy="166" r="1.8" fill="#fff"/>
+                <circle cx="274" cy="166" r="1.8" fill="#fff"/>
+                <circle cx="248" cy="170" r="0.8" fill="#fff" opacity="0.5"/>
+                <circle cx="278" cy="170" r="0.8" fill="#fff" opacity="0.5"/>
+                <!-- Subtle bottom eyelid line -->
+                <path d="M238,172 Q245,175 252,172" stroke="#b5794e" stroke-width="0.7" fill="none" opacity="0.3"/>
+                <path d="M268,172 Q275,175 282,172" stroke="#b5794e" stroke-width="0.7" fill="none" opacity="0.3"/>
+                <!-- Upper eyelid crease -->
+                <path d="M238,163 Q245,160 252,163" stroke="#a57a55" stroke-width="0.8" fill="none" opacity="0.25"/>
+                <path d="M268,163 Q275,160 282,163" stroke="#a57a55" stroke-width="0.8" fill="none" opacity="0.25"/>
+
+                <!-- Eyebrows (thick, dark like the photo) -->
+                <path d="M234,152 Q242,146 254,152" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M266,152 Q278,146 286,152" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+                <!-- Nose (defined but subtle, matches photo) -->
+                <path d="M260,172 Q258,178 256,182 Q258,184 260,184 Q262,184 264,182 Q262,178 260,172"
+                      fill="#b5794e" opacity="0.2"/>
+                <path d="M256,183 Q260,186 264,183" stroke="#b5794e" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+                <!-- ── BEARD / GOATEE (neatly trimmed like the photo) ── -->
+                <!-- Stubble shadow on jawline -->
+                <path d="M228,192 Q226,200 228,210 Q232,218 245,222 Q255,224 260,224 Q265,224 275,222 Q288,218 292,210 Q294,200 292,192"
+                      fill="#1a1a1a" opacity="0.12"/>
+                <!-- Defined goatee / chin beard -->
+                <path d="M245,198 Q244,208 248,215 Q254,220 260,220 Q266,220 272,215 Q276,208 275,198"
+                      fill="#1a1a1a" opacity="0.25"/>
+                <!-- Chin beard bottom -->
+                <path d="M248,215 Q254,222 260,222 Q266,222 272,215"
+                      fill="#1a1a1a" opacity="0.2"/>
+                <!-- Soul patch / under lip -->
+                <ellipse cx="260" cy="197" rx="4" ry="3" fill="#1a1a1a" opacity="0.18"/>
+                <!-- Light stubble texture on cheeks -->
+                <path d="M228,192 Q230,198 234,204 Q238,208 244,210"
+                      stroke="#1a1a1a" stroke-width="0.8" fill="none" opacity="0.1"/>
+                <path d="M292,192 Q290,198 286,204 Q282,208 276,210"
+                      stroke="#1a1a1a" stroke-width="0.8" fill="none" opacity="0.1"/>
+                <!-- Mustache -->
+                <path d="M250,190 Q255,188 260,190 Q265,188 270,190"
+                      stroke="#1a1a1a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.2"/>
+
+                <!-- Smile (warm, confident like the photo) -->
+                <path d="M246,190 Q252,200 260,200 Q268,200 274,190" stroke="#b57b5c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                <!-- Teeth hint -->
+                <path d="M250,192 Q255,198 260,198 Q265,198 270,192" fill="#fff" opacity="0.15"/>
+                <!-- Smile dimples -->
+                <circle cx="243" cy="191" r="1.5" fill="#b57b5c" opacity="0.2"/>
+                <circle cx="277" cy="191" r="1.5" fill="#b57b5c" opacity="0.2"/>
+              </g>
+
+              <!-- ── HEADPHONES (over-ear, sitting over cap) ── -->
+              <!-- Headband arc -->
+              <path d="M215,172 Q213,122 260,108 Q307,122 305,172" stroke="#475569" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+              <!-- Headband padding -->
+              <path d="M236,116 Q248,110 260,109 Q272,110 284,116" stroke="#374151" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Left ear cup -->
+              <rect x="208" y="163" width="13" height="22" rx="6" fill="#374151" stroke="#475569" stroke-width="1.5"/>
+              <rect x="210" y="167" width="9" height="14" rx="4" fill="#4a5568" opacity="0.5"/>
+              <!-- Right ear cup -->
+              <rect x="299" y="163" width="13" height="22" rx="6" fill="#374151" stroke="#475569" stroke-width="1.5"/>
+              <rect x="301" y="167" width="9" height="14" rx="4" fill="#4a5568" opacity="0.5"/>
+              <!-- LED accent -->
+              <circle cx="212" cy="174" r="1.5" fill="#00d4aa" opacity="0.6" class="sparkle sparkle-8"/>
+              <circle cx="308" cy="174" r="1.5" fill="#00d4aa" opacity="0.6" class="sparkle sparkle-8"/>
+            </g>
+
+            <!-- ══════════ FLOATING TECH ELEMENTS ══════════ -->
+
+            <!-- ── Floating bar chart card (top-left, pushed down from nav) ── -->
+            <g class="float float-1" transform="translate(20, 120)" filter="url(#dropShadow)">
+              <rect width="68" height="54" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" opacity="0.88"/>
+              <rect x="10" y="8" width="18" height="3" rx="1.5" fill="#94a3b8" opacity="0.3"/>
+              <rect x="10" y="33" width="10" height="14" rx="3" fill="#00d4aa" opacity="0.85"/>
+              <rect x="23" y="23" width="10" height="24" rx="3" fill="#6366f1" opacity="0.75"/>
+              <rect x="36" y="15" width="10" height="32" rx="3" fill="#00d4aa" opacity="0.85"/>
+              <rect x="49" y="28" width="10" height="19" rx="3" fill="#8b5cf6" opacity="0.75"/>
+            </g>
+
+            <!-- ── Floating neural network card (far right, mid) ── -->
+            <g class="float float-3" transform="translate(425, 230)" filter="url(#dropShadow)">
+              <rect width="72" height="62" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" opacity="0.88"/>
+              <circle cx="18" cy="18" r="4.5" fill="none" stroke="#00d4aa" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="18" cy="32" r="4.5" fill="none" stroke="#00d4aa" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="18" cy="46" r="4.5" fill="none" stroke="#00d4aa" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="38" cy="24" r="4.5" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.7"/>
+              <circle cx="38" cy="40" r="4.5" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.7"/>
+              <circle cx="56" cy="32" r="4.5" fill="#00d4aa" opacity="0.65"/>
+              <g stroke="#94a3b8" stroke-width="0.7" opacity="0.35">
+                <line x1="23" y1="18" x2="33" y2="24"/><line x1="23" y1="18" x2="33" y2="40"/>
+                <line x1="23" y1="32" x2="33" y2="24"/><line x1="23" y1="32" x2="33" y2="40"/>
+                <line x1="23" y1="46" x2="33" y2="24"/><line x1="23" y1="46" x2="33" y2="40"/>
+                <line x1="43" y1="24" x2="51" y2="32"/><line x1="43" y1="40" x2="51" y2="32"/>
+              </g>
+            </g>
+
+            <!-- ── Floating terminal (bottom-left) ── -->
+            <g class="float float-4" transform="translate(8, 335)" filter="url(#dropShadow)">
+              <rect width="70" height="50" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" opacity="0.88"/>
+              <circle cx="14" cy="12" r="2.8" fill="#ef4444" opacity="0.65"/>
+              <circle cx="22" cy="12" r="2.8" fill="#f59e0b" opacity="0.65"/>
+              <circle cx="30" cy="12" r="2.8" fill="#22c55e" opacity="0.65"/>
+              <text x="10" y="30" font-family="monospace" font-size="7" fill="#00d4aa" opacity="0.85">$ python</text>
+              <text x="10" y="40" font-family="monospace" font-size="7" fill="#94a3b8" opacity="0.5">&gt;&gt;&gt; train()</text>
+            </g>
+
+            <!-- ── Floating gear (bottom-right) ── -->
+            <g class="float float-7" transform="translate(455, 380)">
+              <circle cx="14" cy="14" r="11" fill="none" stroke="#6366f1" stroke-width="1.6" opacity="0.35"/>
+              <circle cx="14" cy="14" r="4.5" fill="none" stroke="#6366f1" stroke-width="1.6" opacity="0.35"/>
+              <g stroke="#6366f1" stroke-width="1.6" opacity="0.35">
+                <line x1="14" y1="1" x2="14" y2="5"/>
+                <line x1="14" y1="23" x2="14" y2="27"/>
+                <line x1="1" y1="14" x2="5" y2="14"/>
+                <line x1="23" y1="14" x2="27" y2="14"/>
+                <line x1="5" y1="5" x2="8" y2="8"/>
+                <line x1="20" y1="20" x2="23" y2="23"/>
+                <line x1="23" y1="5" x2="20" y2="8"/>
+                <line x1="5" y1="23" x2="8" y2="20"/>
+              </g>
+            </g>
+
+            <!-- ── Sparkle particles (reduced to 6) ── -->
+            <circle class="sparkle sparkle-1" cx="65" cy="200" r="2" fill="#00d4aa" opacity="0.45"/>
+            <circle class="sparkle sparkle-2" cx="440" cy="180" r="1.5" fill="#6366f1" opacity="0.35"/>
+            <circle class="sparkle sparkle-4" cx="148" cy="420" r="1.5" fill="#00d4aa" opacity="0.25"/>
+            <circle class="sparkle sparkle-5" cx="400" cy="430" r="2" fill="#6366f1" opacity="0.2"/>
+            <circle class="sparkle sparkle-7" cx="490" cy="300" r="1.5" fill="#8b5cf6" opacity="0.25"/>
+            <circle class="sparkle sparkle-9" cx="310" cy="80" r="1.5" fill="#00d4aa" opacity="0.3"/>
+          </svg>
         </div>
       </div>
     </section>
@@ -87,55 +535,46 @@
     <section class="about section" id="about">
       <div class="container">
         <h2 class="section-label reveal-up">About Me</h2>
-        <h3 class="section-title reveal-up">The Story So Far</h3>
+        <h3 class="section-title title-decorated reveal-up">Who I Am &amp; What I Build</h3>
         <div class="about-grid">
           <div class="about-image reveal-left">
             <div class="image-frame">
               <div class="image-placeholder">
-                <img src="https://picsum.photos/seed/amarportrait/480/580" alt="Portrait of Amar Kumar" loading="lazy" />
+                <img src="/image/amar.jpg" alt="Portrait of Amar Kumar" loading="lazy" />
               </div>
               <div class="image-decoration" aria-hidden="true"></div>
             </div>
             <div class="about-stats">
               <div class="stat">
-                <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
                 <span class="stat-label">Projects</span>
               </div>
               <div class="stat">
                 <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
-                <span class="stat-label">Certifications</span>
+                <span class="stat-label">Technologies</span>
               </div>
               <div class="stat">
-                <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
-                <span class="stat-label">Years Learning</span>
+                <span class="stat-number" data-target="2">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Years Coding</span>
               </div>
             </div>
           </div>
           <div class="about-text reveal-right">
             <p>
-              I've always been the person who asks <em>"why?"</em> one too many times. That
-              curiosity led me from an engineering classroom to the world of data science,
-              where every dataset tells a story waiting to be uncovered.
+              I'm a 2nd-year Computer Science student with a strong foundation in statistics, algorithms, and software systems. I've spent the last three years working on real-world datasets, building ML models, and shipping production-ready code.
             </p>
             <p>
-              My engineering background gave me the discipline of structured problem-solving.
-              But it was my first encounter with a messy, real-world dataset that truly lit
-              the spark — the thrill of cleaning noise into clarity, of finding the signal
-              that drives a decision. Since then, I've been building models, wrangling data,
-              and chasing that feeling every single day.
+              I specialize in end-to-end ML pipelines — from feature engineering and model training to deployment with FastAPI or Flask. I also write clean, tested, maintainable code in Python and JavaScript, and I'm comfortable reasoning about system design, API architecture, and scalable infrastructure.
             </p>
             <p>
-              I believe great data science isn't just about algorithms — it's about asking
-              the right questions and communicating answers that people can act on. Whether
-              it's predicting customer behavior or visualizing trends that shift strategy,
-              I'm driven to make data <strong>useful</strong>.
+              I'm looking for roles where I can work at the intersection of data and engineering — building things that are both analytically rigorous and well-architected. I thrive in teams that value curiosity, ownership, and shipping things that matter.
             </p>
             <div class="about-traits">
               <span class="trait"><i class="fa-solid fa-microscope"></i> Curious by Nature</span>
               <span class="trait"><i class="fa-solid fa-bullseye"></i> Detail-Oriented</span>
               <span class="trait"><i class="fa-solid fa-book-open"></i> Always Learning</span>
-              <span class="trait"><i class="fa-solid fa-people-group"></i> Team Player</span>
-              <span class="trait"><i class="fa-solid fa-lightbulb"></i> Problem Solver</span>
+              <span class="trait"><i class="fa-solid fa-terminal"></i> Clean Code Advocate</span>
+              <span class="trait"><i class="fa-solid fa-chart-line"></i> Data-Driven Thinker</span>
             </div>
           </div>
         </div>
@@ -146,94 +585,87 @@
     <section class="skills section" id="skills">
       <div class="container">
         <h2 class="section-label reveal-up">Skills</h2>
-        <h3 class="section-title reveal-up">My Technical Toolkit</h3>
+        <h3 class="section-title title-decorated reveal-up">Skills &amp; Technologies</h3>
         <div class="skills-grid">
 
-          <!-- Programming -->
+          <!-- Languages & Tools -->
           <div class="skill-category reveal-up">
             <div class="skill-category-header">
               <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
-              <h4>Programming</h4>
+              <h4>Languages &amp; Tools</h4>
             </div>
-            <div class="skill-bars">
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Python</span><span>90%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>SQL</span><span>85%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>R</span><span>70%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
-              </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">R</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">Git &amp; GitHub</span>
+              <span class="skill-tag">JavaScript</span>
             </div>
           </div>
 
-          <!-- Data & ML -->
+          <!-- Data Science & ML -->
           <div class="skill-category reveal-up">
             <div class="skill-category-header">
               <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
-              <h4>Data &amp; ML</h4>
+              <h4>Data Science &amp; ML</h4>
             </div>
-            <div class="skill-bars">
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Pandas / NumPy</span><span>88%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Scikit-learn</span><span>82%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>TensorFlow</span><span>65%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
-              </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Pandas / NumPy</span>
+              <span class="skill-tag">Scikit-learn</span>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">FastAPI / Flask</span>
+              <span class="skill-tag">Feature Engineering</span>
+              <span class="skill-tag">SHAP / Explainability</span>
+              <span class="skill-tag">NLP</span>
             </div>
           </div>
 
-          <!-- Visualization -->
+          <!-- Visualization & Frontend -->
           <div class="skill-category reveal-up">
             <div class="skill-category-header">
               <div class="skill-icon"><i class="fa-solid fa-chart-line"></i></div>
-              <h4>Visualization</h4>
+              <h4>Visualization &amp; Frontend</h4>
             </div>
-            <div class="skill-bars">
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Tableau</span><span>80%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Power BI</span><span>75%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Matplotlib / Seaborn</span><span>85%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-              </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Tableau</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Matplotlib / Seaborn</span>
+              <span class="skill-tag">Plotly Dash</span>
+              <span class="skill-tag">React.js</span>
+              <span class="skill-tag">Node.js</span>
             </div>
           </div>
 
-          <!-- Tools -->
+          <!-- Tools & Platforms -->
           <div class="skill-category reveal-up">
             <div class="skill-category-header">
               <div class="skill-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-              <h4>Tools</h4>
+              <h4>Tools &amp; Platforms</h4>
             </div>
-            <div class="skill-bars">
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Git / GitHub</span><span>85%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>Jupyter Notebook</span><span>92%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-info"><span>VS Code / Excel</span><span>88%</span></div>
-                <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-              </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Jupyter Notebook</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Redis</span>
+              <span class="skill-tag">Apache Airflow</span>
+            </div>
+          </div>
+
+          <!-- Engineering Fundamentals -->
+          <div class="skill-category reveal-up">
+            <div class="skill-category-header">
+              <div class="skill-icon"><i class="fa-solid fa-laptop-code"></i></div>
+              <h4>Engineering Fundamentals</h4>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Data Structures &amp; Algorithms</span>
+              <span class="skill-tag">System Design</span>
+              <span class="skill-tag">REST API Design</span>
+              <span class="skill-tag">Unit Testing (pytest)</span>
+              <span class="skill-tag">Agile / Scrum</span>
             </div>
           </div>
 
@@ -245,96 +677,95 @@
     <section class="projects section" id="projects">
       <div class="container">
         <h2 class="section-label reveal-up">Projects</h2>
-        <h3 class="section-title reveal-up">Things I've Built</h3>
+        <h3 class="section-title title-decorated reveal-up">Things I've Built</h3>
+
+        <!-- Filter buttons -->
+        <div class="project-filters reveal-up">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ml">Machine Learning</button>
+          <button class="filter-btn" data-filter="data">Data Engineering</button>
+          <button class="filter-btn" data-filter="eng">Engineering</button>
+        </div>
+
+        <!-- Featured Project (full-width) -->
+        <article class="project-featured reveal-up" data-category="ml">
+          <div class="project-featured-image">
+            <img src="https://picsum.photos/seed/churn/800/500" alt="Customer Churn Prediction project screenshot" loading="lazy" />
+            <span class="project-featured-badge"><i class="fa-solid fa-star"></i> Featured</span>
+          </div>
+          <div class="project-featured-info">
+            <h4>Customer Churn Prediction</h4>
+            <p>End-to-end ML pipeline predicting telecom customer churn using XGBoost and SHAP for explainability. Achieved 89% accuracy on holdout set. Deployed via FastAPI with a React dashboard.</p>
+            <ul class="project-featured-highlights">
+              <li><i class="fa-solid fa-check"></i> 89% accuracy on holdout set</li>
+              <li><i class="fa-solid fa-check"></i> SHAP-based model explainability</li>
+              <li><i class="fa-solid fa-check"></i> FastAPI deployment + React dashboard</li>
+            </ul>
+            <div class="project-tags">
+              <span>Python</span><span>XGBoost</span><span>SHAP</span><span>FastAPI</span><span>React</span>
+            </div>
+            <div class="project-links">
+              <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Grid -->
         <div class="projects-grid">
 
-          <!-- Project 1 -->
-          <article class="project-card reveal-up">
+          <article class="project-card reveal-up" data-category="ml">
             <div class="project-card-inner">
               <div class="project-image">
-                <img src="https://picsum.photos/seed/churn/600/400" alt="Customer Churn Prediction project screenshot" loading="lazy" />
-                <div class="project-overlay">
-                  <p>Built a classification model achieving 93% accuracy to identify at-risk telecom customers using ensemble methods and feature engineering on a 7,000-row dataset.</p>
-                </div>
+                <img src="https://picsum.photos/seed/forecast/600/400" alt="Real-Time Twitter Sentiment Analyzer screenshot" loading="lazy" />
               </div>
               <div class="project-info">
-                <h4>Customer Churn Prediction</h4>
-                <p>ML model to identify customers likely to leave, enabling proactive retention strategies.</p>
+                <h4>Real-Time Twitter Sentiment Analyzer</h4>
+                <p>Streaming NLP pipeline using Kafka + PySpark to classify tweet sentiment in real time. Built REST API endpoint and visualized results on a live Plotly Dash dashboard.</p>
                 <div class="project-tags">
-                  <span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>XGBoost</span>
+                  <span>Python</span><span>PySpark</span><span>Kafka</span><span>NLP</span><span>Dash</span>
                 </div>
                 <div class="project-links">
-                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
-                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Project 2 -->
-          <article class="project-card reveal-up">
+          <article class="project-card reveal-up" data-category="data">
             <div class="project-card-inner">
               <div class="project-image">
-                <img src="https://picsum.photos/seed/forecast/600/400" alt="Sales Forecasting Dashboard screenshot" loading="lazy" />
-                <div class="project-overlay">
-                  <p>Interactive Tableau dashboard backed by a time-series ARIMA model, forecasting quarterly revenue for a retail chain with 94% directional accuracy.</p>
-                </div>
+                <img src="https://picsum.photos/seed/nlpsentiment/600/400" alt="E-Commerce Data Warehouse screenshot" loading="lazy" />
               </div>
               <div class="project-info">
-                <h4>Sales Forecasting Dashboard</h4>
-                <p>Time-series analysis and interactive dashboard to project future sales trends.</p>
+                <h4>E-Commerce Data Warehouse</h4>
+                <p>Designed and implemented a star-schema data warehouse in PostgreSQL. Built ETL pipelines with Apache Airflow, reducing reporting query time by 60%.</p>
                 <div class="project-tags">
-                  <span>Python</span><span>Tableau</span><span>ARIMA</span><span>Statsmodels</span>
+                  <span>SQL</span><span>PostgreSQL</span><span>Airflow</span><span>ETL</span><span>Power BI</span>
                 </div>
                 <div class="project-links">
-                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
-                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Project 3 -->
-          <article class="project-card reveal-up">
+          <article class="project-card reveal-up" data-category="eng">
             <div class="project-card-inner">
               <div class="project-image">
-                <img src="https://picsum.photos/seed/nlpsentiment/600/400" alt="NLP Sentiment Analyzer screenshot" loading="lazy" />
-                <div class="project-overlay">
-                  <p>Fine-tuned a Transformer-based model on 50k+ product reviews, deploying a Flask API that classifies sentiment in real time with 91% F1-score.</p>
-                </div>
+                <img src="https://picsum.photos/seed/edadata/600/400" alt="URL Shortener Microservice screenshot" loading="lazy" />
               </div>
               <div class="project-info">
-                <h4>NLP Sentiment Analyzer</h4>
-                <p>Deep learning pipeline for real-time sentiment classification of product reviews.</p>
+                <h4>URL Shortener Microservice</h4>
+                <p>RESTful microservice built with Node.js and Redis for caching. Handles 10k+ requests/min with sub-10ms response time. Containerized with Docker and deployed on Railway.</p>
                 <div class="project-tags">
-                  <span>Python</span><span>TensorFlow</span><span>NLP</span><span>Flask</span>
+                  <span>Node.js</span><span>Redis</span><span>Docker</span><span>REST API</span>
                 </div>
                 <div class="project-links">
-                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
-                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 4 -->
-          <article class="project-card reveal-up">
-            <div class="project-card-inner">
-              <div class="project-image">
-                <img src="https://picsum.photos/seed/edadata/600/400" alt="Exploratory Data Analysis project screenshot" loading="lazy" />
-                <div class="project-overlay">
-                  <p>Comprehensive EDA on a public health dataset, uncovering key demographic correlations with interactive Plotly visualizations and statistical testing.</p>
-                </div>
-              </div>
-              <div class="project-info">
-                <h4>EDA on Public Health Dataset</h4>
-                <p>In-depth exploratory analysis revealing hidden patterns in public health data.</p>
-                <div class="project-tags">
-                  <span>Python</span><span>Plotly</span><span>Seaborn</span><span>Jupyter</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> Code</a>
-                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                  <a href="#" aria-label="View source code on GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+                  <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
                 </div>
               </div>
             </div>
@@ -348,98 +779,73 @@
     <section class="experience section" id="experience">
       <div class="container">
         <h2 class="section-label reveal-up">Experience &amp; Education</h2>
-        <h3 class="section-title reveal-up">My Journey</h3>
-        <div class="timeline">
+        <h3 class="section-title title-decorated reveal-up">My Journey</h3>
+        <div class="timeline-v2">
 
-          <div class="timeline-item reveal-left">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <span class="timeline-date">2024 — Present</span>
-              <h4>Data Science Intern</h4>
-              <p class="timeline-org">TechAnalytica Solutions</p>
-              <p>Worked on predictive analytics pipelines, built ML models for client engagement scoring, and automated ETL workflows reducing manual processing time by 40%.</p>
+          <!-- Item 1 — Work -->
+          <div class="tl-item tl-left reveal-left">
+            <div class="tl-node">
+              <span class="tl-dot"><span class="tl-pulse"></span></span>
+            </div>
+            <div class="tl-card">
+              <div class="tl-badge tl-badge--work"><i class="fa-solid fa-briefcase"></i></div>
+              <span class="tl-date">2027 — Present</span>
+              <h4 class="tl-title">Data Science Intern</h4>
+              <p class="tl-org">TechAnalytica Solutions</p>
+              <ul class="tl-bullets">
+                <li>Built and deployed a binary classification model (Random Forest) achieving 84&#37; F1-score in production</li>
+                <li>Wrote Python ETL scripts to automate data ingestion from 3 external APIs, reducing manual effort by 70&#37;</li>
+                <li>Collaborated with 4-person agile team using Git, Jira, and weekly sprints</li>
+              </ul>
             </div>
           </div>
 
-          <div class="timeline-item reveal-right">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <span class="timeline-date">2023</span>
-              <h4>ML Research Project Lead</h4>
-              <p class="timeline-org">University Research Lab</p>
-              <p>Led a 4-member team on a sentiment analysis research project using Transformer architectures. Published findings in the university journal and presented at a regional data science symposium.</p>
+          <!-- Item 2 — Open Source -->
+          <div class="tl-item tl-right reveal-right">
+            <div class="tl-node">
+              <span class="tl-dot"><span class="tl-pulse"></span></span>
+            </div>
+            <div class="tl-card">
+              <div class="tl-badge tl-badge--oss"><i class="fa-solid fa-code-branch"></i></div>
+              <span class="tl-date">2025 — Present</span>
+              <h4 class="tl-title">Open Source Contributor</h4>
+              <p class="tl-org">Various GitHub Projects</p>
+              <ul class="tl-bullets">
+                <li>Contributed bug fixes and features to 3+ Python open-source libraries (50+ GitHub stars combined)</li>
+                <li>Wrote unit tests using pytest improving code coverage from 60&#37; to 85&#37;</li>
+                <li>Reviewed PRs and maintained technical documentation</li>
+              </ul>
             </div>
           </div>
 
-          <div class="timeline-item reveal-left">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <span class="timeline-date">2021 — 2025</span>
-              <h4>B.Tech in Computer Science &amp; Engineering</h4>
-              <p class="timeline-org">National Institute of Technology</p>
-              <p>Relevant coursework: Data Structures &amp; Algorithms, Statistical Methods, Machine Learning, Database Management Systems, Linear Algebra, Probability &amp; Statistics.</p>
+          <!-- Item 3 — Research -->
+          <div class="tl-item tl-left reveal-left">
+            <div class="tl-node">
+              <span class="tl-dot"><span class="tl-pulse"></span></span>
+            </div>
+            <div class="tl-card">
+              <div class="tl-badge tl-badge--research"><i class="fa-solid fa-flask"></i></div>
+              <span class="tl-date">2026</span>
+              <h4 class="tl-title">ML Research Project Lead</h4>
+              <p class="tl-org">University Research Lab</p>
+              <p class="tl-desc">Led a 4-member team on a sentiment analysis research project using Transformer architectures. Published findings in the university journal and presented at a regional data science symposium.</p>
             </div>
           </div>
 
-          <div class="timeline-item reveal-right">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <span class="timeline-date">2021</span>
-              <h4>Higher Secondary (XII) — Science</h4>
-              <p class="timeline-org">Delhi Public School</p>
-              <p>Scored 94% with a focus on Mathematics and Computer Science. Won the inter-school coding competition and led the school's tech club.</p>
+          <!-- Item 4 — Education -->
+          <div class="tl-item tl-right reveal-right">
+            <div class="tl-node">
+              <span class="tl-dot"><span class="tl-pulse"></span></span>
+            </div>
+            <div class="tl-card">
+              <div class="tl-badge tl-badge--edu"><i class="fa-solid fa-graduation-cap"></i></div>
+              <span class="tl-date">2024 — 2028</span>
+              <h4 class="tl-title">B.Tech in Computer Science &amp; Engineering</h4>
+              <p class="tl-org">South Asian University</p>
+              <p class="tl-desc">Relevant coursework: Data Structures &amp; Algorithms, Statistical Methods, Machine Learning, Database Management Systems, Linear Algebra, Probability &amp; Statistics.</p>
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CERTIFICATIONS ===================== -->
-    <section class="certifications section" id="certifications">
-      <div class="container">
-        <h2 class="section-label reveal-up">Certifications &amp; Achievements</h2>
-        <h3 class="section-title reveal-up">Credentials That Back It Up</h3>
-        <div class="cert-scroll-wrapper reveal-up">
-          <div class="cert-track">
-
-            <div class="cert-card">
-              <div class="cert-icon"><i class="fa-brands fa-google"></i></div>
-              <h4>Google Data Analytics</h4>
-              <p>Professional Certificate</p>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-icon"><i class="fa-solid fa-flask"></i></div>
-              <h4>IBM Data Science</h4>
-              <p>Professional Certificate</p>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-icon"><i class="fa-solid fa-trophy"></i></div>
-              <h4>Kaggle Competitions</h4>
-              <p>Top 15% — Titanic &amp; Housing Prices</p>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-icon"><i class="fa-brands fa-hackerrank"></i></div>
-              <h4>HackerRank Python</h4>
-              <p>Gold Badge (5 Stars)</p>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
-              <h4>Deep Learning Specialization</h4>
-              <p>Coursera — Andrew Ng</p>
-            </div>
-
-            <div class="cert-card">
-              <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
-              <h4>SQL Advanced</h4>
-              <p>HackerRank Certification</p>
-            </div>
-
-          </div>
         </div>
       </div>
     </section>
@@ -448,7 +854,7 @@
     <section class="blog section" id="blog">
       <div class="container">
         <h2 class="section-label reveal-up">Blog</h2>
-        <h3 class="section-title reveal-up">Thoughts &amp; Learnings</h3>
+        <h3 class="section-title title-decorated reveal-up">Thoughts &amp; Learnings</h3>
         <p class="section-subtitle reveal-up">Where I share what I'm learning, building, and thinking about in the world of data.</p>
         <div class="blog-grid">
 
@@ -495,14 +901,76 @@
       </div>
     </section>
 
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section class="testimonials section" id="testimonials">
+      <div class="container">
+        <h2 class="section-label reveal-up">Testimonials</h2>
+        <h3 class="section-title title-decorated reveal-up">What People Say</h3>
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card reveal-up">
+            <div class="testimonial-quote">
+              <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+            </div>
+            <p class="testimonial-text">Amar is one of the most driven students I've mentored. His ability to translate complex ML concepts into production-ready code is remarkable for someone his age. He doesn't just build models — he builds systems.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://picsum.photos/seed/prof1/80/80" alt="Prof. Sharma" loading="lazy" />
+              </div>
+              <div>
+                <h5>Prof. R.k Sharma</h5>
+                <span>ML Research Advisor, SAU</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-up">
+            <div class="testimonial-quote">
+              <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+            </div>
+            <p class="testimonial-text">During his internship, Amar took full ownership of the ETL pipeline redesign. He reduced data processing time by 70% and proactively documented everything. He's a rare mix of technical skill and team-first attitude.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://picsum.photos/seed/lead1/80/80" alt="Priya Menon" loading="lazy" />
+              </div>
+              <div>
+                <h5>Priya Menon</h5>
+                <span>Engineering Lead, TechAnalytica</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-up">
+            <div class="testimonial-quote">
+              <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+            </div>
+            <p class="testimonial-text">I've reviewed many PRs from contributors, and Amar's stand out. Clean code, well-tested, thoughtful commit messages. He treats open-source with the professionalism of a senior engineer.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://picsum.photos/seed/dev1/80/80" alt="Alex Torres" loading="lazy" />
+              </div>
+              <div>
+                <h5>Alex Torres</h5>
+                <span>Open Source Maintainer</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== CONTACT SECTION ===================== -->
     <section class="contact section" id="contact">
       <div class="container">
         <h2 class="section-label reveal-up">Contact</h2>
-        <h3 class="section-title reveal-up">Let's Build Something with Data</h3>
-        <p class="section-subtitle reveal-up">Have an idea, a question, or just want to say hello? I'd love to hear from you.</p>
+        <h3 class="section-title title-decorated reveal-up">Open to Opportunities</h3>
+        <p class="section-subtitle reveal-up">I'm actively looking for roles in data science, machine learning, and engineering. Feel free to reach out — I reply within 24 hours.</p>
         <div class="contact-grid">
           <form class="contact-form reveal-left" id="contactForm" novalidate>
+            <input type="hidden" name="access_key" value="9d7e634d-2050-4137-89b6-8d2051ce46bf" />
+            <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
             <div class="form-group">
               <label for="contactName">Name</label>
               <input type="text" id="contactName" name="name" placeholder="Your name" required autocomplete="name" />
@@ -513,11 +981,11 @@
             </div>
             <div class="form-group">
               <label for="contactSubject">Subject</label>
-              <input type="text" id="contactSubject" name="subject" placeholder="What's this about?" />
+              <input type="text" id="contactSubject" name="subject" placeholder="e.g. Job Opportunity / Collaboration / Just Saying Hi" />
             </div>
             <div class="form-group">
               <label for="contactMessage">Message</label>
-              <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me more..." required></textarea>
+              <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about the role, project, or just drop a hello..." required></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-full">
               <span>Send Message</span>
@@ -529,7 +997,7 @@
               <i class="fa-solid fa-envelope"></i>
               <div>
                 <h4>Email</h4>
-                <a href="mailto:amar.kumar@email.com">amar.kumar@email.com</a>
+                <a href="mailto:amar.kumar.career@gmail.com">amar.kumar.career@gmail.com</a>
               </div>
             </div>
             <div class="contact-info-card">
@@ -542,10 +1010,10 @@
             <div class="contact-social">
               <h4>Find me on</h4>
               <div class="social-links">
-                <a href="#" aria-label="LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#" aria-label="GitHub profile"><i class="fa-brands fa-github"></i></a>
-                <a href="#" aria-label="Twitter / X profile"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="mailto:amar.kumar@email.com" aria-label="Send email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/amar-%E2%80%8Ekumar-745288289/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/Amarkumar30" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fa-brands fa-github"></i></a>
+                <a href="https://x.com/KumarAmar50968" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X profile"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:amar.kumar.career@gmail.com" aria-label="Send email"><i class="fa-solid fa-envelope"></i></a>
               </div>
             </div>
           </div>
@@ -555,6 +1023,22 @@
 
   </main>
 
+  <!-- ===================== HIRE ME CTA ===================== -->
+  <section class="cta-banner" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h3>Interested in working together?</h3>
+          <p>I'm currently open to data science, ML engineering, and full-stack roles. Let's build something great.</p>
+        </div>
+        <a href="#contact" class="btn btn-primary cta-btn">
+          <span>Get in Touch</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer" role="contentinfo">
     <div class="container footer-inner">
@@ -562,7 +1046,7 @@
         <a href="#hero" class="nav-logo" aria-label="Home">
           <span class="logo-bracket">&lt;</span>AK<span class="logo-bracket"> /&gt;</span>
         </a>
-        <p>&copy; 2025 Amar Kumar &mdash; Designed &amp; Built by Amar Kumar</p>
+        <p>&copy; 2025 Amar Kumar · Made with ☕ &amp; Python</p>
       </div>
       <ul class="footer-nav" aria-label="Footer navigation">
         <li><a href="#about">About</a></li>

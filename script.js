@@ -3,6 +3,12 @@
    JavaScript: Interactions, Animations, Canvas
    ============================================================= */
 
+/* ── Apply saved theme immediately (prevent FOUC) ── */
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
 (function () {
   'use strict';
 
@@ -44,7 +50,7 @@
     animateCursorRing();
 
     // Hover enlargement on interactive elements
-    const hoverTargets = document.querySelectorAll('a, button, .project-card, .cert-card, .blog-card, .trait');
+    var hoverTargets = document.querySelectorAll('a, button, .project-card, .project-featured, .cert-card, .blog-card, .testimonial-card, .trait, .filter-btn, .theme-toggle');
     hoverTargets.forEach(function (el) {
       el.addEventListener('mouseenter', function () { document.body.classList.add('cursor-hover'); });
       el.addEventListener('mouseleave', function () { document.body.classList.remove('cursor-hover'); });
@@ -99,9 +105,10 @@
   /* ────────────── TYPEWRITER EFFECT ────────────── */
   const typewriterEl = document.getElementById('typewriterText');
   const phrases = [
-    'Data Scientist in the Making',
-    'Engineer. Analyst. Problem Solver.',
-    'Turning Data into Decisions.'
+    'Data Scientist & ML Engineer',
+    'Building ML Pipelines & Scalable Systems',
+    'From Raw Data to Production Code',
+    'Turning Data into Decisions'
   ];
   let phraseIndex = 0;
   let charIndex = 0;
@@ -156,19 +163,6 @@
         setTimeout(function () {
           el.classList.add('revealed');
         }, delay);
-      }
-    });
-  }
-
-  /* ────────────── SKILL BAR ANIMATION ────────────── */
-  function animateSkillBars() {
-    var bars = document.querySelectorAll('.skill-bar-fill');
-    var windowHeight = window.innerHeight;
-
-    bars.forEach(function (bar) {
-      var rect = bar.getBoundingClientRect();
-      if (rect.top < windowHeight * 0.9 && bar.style.width === '0%') {
-        bar.style.width = bar.getAttribute('data-width') + '%';
       }
     });
   }
@@ -313,48 +307,195 @@
   /* ────────────── CONTACT FORM (CLIENT-SIDE ONLY) ────────────── */
   var contactForm = document.getElementById('contactForm');
 
+  // Helper: remove existing field errors
+  function clearFieldErrors() {
+    contactForm.querySelectorAll('.field-error').forEach(function (el) {
+      el.remove();
+    });
+  }
+
+  // Helper: show inline error below a field
+  function showFieldError(field, message) {
+    var existing = field.parentElement.querySelector('.field-error');
+    if (existing) existing.remove();
+    var span = document.createElement('span');
+    span.className = 'field-error';
+    span.textContent = message;
+    field.parentElement.appendChild(span);
+  }
+
   contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
+    clearFieldErrors();
 
-    var name = document.getElementById('contactName').value.trim();
-    var email = document.getElementById('contactEmail').value.trim();
-    var message = document.getElementById('contactMessage').value.trim();
+    var nameField = document.getElementById('contactName');
+    var emailField = document.getElementById('contactEmail');
+    var messageField = document.getElementById('contactMessage');
 
-    if (!name || !email || !message) {
-      alert('Please fill in all required fields.');
-      return;
+    var name = nameField.value.trim();
+    var email = emailField.value.trim();
+    var message = messageField.value.trim();
+    var hasError = false;
+
+    if (!name) {
+      showFieldError(nameField, 'Please enter your name.');
+      hasError = true;
+    }
+    if (!email) {
+      showFieldError(emailField, 'Please enter your email address.');
+      hasError = true;
+    } else {
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        showFieldError(emailField, 'Please enter a valid email address.');
+        hasError = true;
+      }
+    }
+    if (!message) {
+      showFieldError(messageField, 'Please enter a message.');
+      hasError = true;
     }
 
-    // Simple email validation
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
+    if (hasError) return;
 
-    // Simulate send
     var btn = contactForm.querySelector('button[type="submit"]');
     var originalHTML = btn.innerHTML;
-    btn.innerHTML = '<span>Sent!</span> <i class="fa-solid fa-check"></i>';
-    btn.style.background = '#10b981';
+    btn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
     btn.disabled = true;
 
-    setTimeout(function () {
-      btn.innerHTML = originalHTML;
-      btn.style.background = '';
-      btn.disabled = false;
-      contactForm.reset();
-    }, 3000);
+    var formData = new FormData(contactForm);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (data.success) {
+        btn.innerHTML = '<span>Sent!</span> <i class="fa-solid fa-check"></i>';
+        btn.style.background = '#10b981';
+        contactForm.reset();
+      } else {
+        btn.innerHTML = '<span>Failed — try again</span> <i class="fa-solid fa-xmark"></i>';
+        btn.style.background = '#ef4444';
+      }
+      setTimeout(function () {
+        btn.innerHTML = originalHTML;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function () {
+      btn.innerHTML = '<span>Failed — try again</span> <i class="fa-solid fa-xmark"></i>';
+      btn.style.background = '#ef4444';
+      setTimeout(function () {
+        btn.innerHTML = originalHTML;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    });
   });
+
+  /* ────────────── PRELOADER ────────────── */
+  var preloader = document.getElementById('preloader');
+  var preloaderFill = document.getElementById('preloaderFill');
+  var preloaderProgress = 0;
+
+  function animatePreloader() {
+    preloaderProgress += (100 - preloaderProgress) * 0.06;
+    if (preloaderFill) preloaderFill.style.width = Math.min(preloaderProgress, 95) + '%';
+    if (preloaderProgress < 94) requestAnimationFrame(animatePreloader);
+  }
+  animatePreloader();
+
+  /* ────────────── THEME TOGGLE ────────────── */
+  var themeToggle = document.getElementById('themeToggle');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
+
+  /* ────────────── PROJECT FILTERS ────────────── */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var projectCards = document.querySelectorAll('.project-card, .project-featured');
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.getAttribute('data-filter');
+
+      // Toggle active class
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      projectCards.forEach(function (card) {
+        var category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+          card.style.display = '';
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(function () {
+            if (!card.classList.contains('filter-visible')) {
+              card.style.display = 'none';
+            }
+          }, 300);
+        }
+
+        if (filter === 'all' || category === filter) {
+          card.classList.add('filter-visible');
+        } else {
+          card.classList.remove('filter-visible');
+        }
+      });
+    });
+  });
+
+  /* ────────────── CARD TILT EFFECT ────────────── */
+  var tiltCards = document.querySelectorAll('.project-card, .project-featured, .testimonial-card, .blog-card');
+
+  tiltCards.forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var centerX = rect.width / 2;
+      var centerY = rect.height / 2;
+      var rotateX = ((y - centerY) / centerY) * -4;
+      var rotateY = ((x - centerX) / centerX) * 4;
+      card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+    });
+
+    card.addEventListener('mouseleave', function () {
+      card.style.transform = '';
+    });
+  });
+
+  /* ────────────── BACK TO TOP BUTTON ────────────── */
+  var backToTopBtn = document.getElementById('backToTop');
+  function toggleBackToTop() {
+    if (!backToTopBtn) return;
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
 
   /* ────────────── UNIFIED SCROLL HANDLER ────────────── */
   function onScroll() {
     updateScrollProgress();
     handleNavbarScroll();
     revealOnScroll();
-    animateSkillBars();
     animateStats();
     highlightActiveNav();
+    toggleBackToTop();
   }
 
   // Use passive listener for performance
@@ -368,8 +509,21 @@
 
   // Also run on load event for images etc.
   window.addEventListener('load', function () {
+    // Finish preloader & dismiss
+    if (preloaderFill) preloaderFill.style.width = '100%';
+    setTimeout(function () {
+      if (preloader) preloader.classList.add('loaded');
+    }, 400);
+
     onScroll();
     revealOnScroll();
+
+    // Add rel="noopener noreferrer" to all external links
+    document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
+      if (!link.getAttribute('rel') || link.getAttribute('rel').indexOf('noopener') === -1) {
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
   });
 
 })();
